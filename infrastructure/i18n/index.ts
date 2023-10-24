@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 import { setI18n, type I18nAdapter, type CallbackDictionary, ErrorCode } from '../../adapters/i18n';
-import en from '../../../assets/i18n/en.json';
-import es from '../../../assets/i18n/es.json';
+import en from '$lib/assets/i18n/en.json';
+import es from '$lib/assets/i18n/es.json';
 
 const dictionaries: Record<string, unknown> = {
 	en,
@@ -10,7 +10,7 @@ const dictionaries: Record<string, unknown> = {
 const storeDictionary = writable(dictionaries['es']);
 
 class I18n implements I18nAdapter {
-	public lang: string = '';
+	public lang = '';
 
 	subscribe(callback: CallbackDictionary) {
 		storeDictionary.subscribe(callback);
